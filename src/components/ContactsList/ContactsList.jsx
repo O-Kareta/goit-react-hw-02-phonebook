@@ -1,8 +1,10 @@
+import css from './ContactsList.module.css';
+
 export const ContactList = ({ contacts }) => {
   return (
-    <ul>
+    <ul className={css.list}>
       {contacts.map(contact => (
-        <li key={contact.id}>
+        <li className={css.listItem} key={contact.id}>
           {contact.name}: {contact.number}
         </li>
       ))}

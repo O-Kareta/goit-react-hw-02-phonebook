@@ -1,9 +1,10 @@
-import {generateUniqueId} from './generateUniqueId';
+import { generateUniqueId } from './generateUniqueId';
 
-export const addContact = (contacts, name) => {
+export const addContact = (contacts, name, number) => {
   const newContact = {
-    id: generateUniqueId(), 
+    id: generateUniqueId(),
     name,
+    number,
   };
   return [...contacts, newContact];
 };
