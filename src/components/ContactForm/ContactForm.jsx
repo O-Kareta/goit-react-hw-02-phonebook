@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import css from './ContactForm.module.css'
+import css from './ContactForm.module.css';
 
 export const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -26,7 +25,8 @@ export const ContactForm = ({ onSubmit }) => {
         placeholder="Name"
         required
       />
-      <input className={css.input}
+      <input
+        className={css.input}
         type="tel"
         name="number"
         pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"

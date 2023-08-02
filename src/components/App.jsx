@@ -6,6 +6,7 @@ import { ContactsFilter } from './ContactsFilter/ContactsFilter';
 import { addContact } from './helpers/addContact';
 import { handleChange } from './helpers/handleChange';
 import { filterContacts } from './helpers/filterContacts';
+import { deleteContact } from './helpers/deleteContact';
 
 export const App = () => {
   const initialContacts = [
@@ -19,15 +20,24 @@ export const App = () => {
   const [number, setNumber] = useState('');
   const [filter, setFilter] = useState('');
 
-  const handleAddContact = (name, number) => {
-    const updatedContacts = addContact(contacts, name, number);
-    setContacts(updatedContacts);
-  };
+const handleAddContact = (name, number) => {
+  const isNameExists = contacts.some(
+    contact => contact.name.toLowerCase() === name.toLowerCase()
+  );
 
+  isNameExists
+    ? alert(`${name} is already in contacts.`)
+    : setContacts(addContact(contacts, name, number));
+};
   const filteredContacts = filterContacts(contacts, filter);
 
   const handleFilterChange = event => {
     setFilter(event.target.value);
+  };
+
+  const handleDeleteContact = id => {
+    const updatedContacts = deleteContact(contacts, id);
+    setContacts(updatedContacts);
   };
 
   return (
@@ -41,7 +51,10 @@ export const App = () => {
       />
       <h2>Contacts</h2>
       <ContactsFilter filter={filter} onChange={handleFilterChange} />
-      <ContactList contacts={filteredContacts} />
+      <ContactList
+        contacts={filteredContacts}
+        onDeleteContact={handleDeleteContact}
+      />
     </div>
   );
 };

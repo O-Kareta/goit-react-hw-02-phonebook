@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import css from './ContactsFilter.module.css';
 
 export const ContactsFilter = ({ filter, onChange }) => {
-
   return (
     <input
       className={css.input}
