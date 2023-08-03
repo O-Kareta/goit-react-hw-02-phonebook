@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types';
 import css from './ContactsFilter.module.css';
 
-export const ContactsFilter = ({ filter, onChange }) => {
+export const ContactsFilter = ({ filter, searchContact }) => {
+  const onChange = event => {
+    const { value } = event.target;
+    searchContact(value);
+  };
   return (
     <input
       className={css.input}
